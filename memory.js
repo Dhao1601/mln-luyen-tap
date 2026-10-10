@@ -1,0 +1,63 @@
+const KEYWORDS=['phân chia thị trường','toàn cầu hóa','khu vực hóa','đa quốc gia','độc quyền','công nghiệp lần thứ nhất','công nghiệp lần thứ hai','công nghiệp lần thứ ba','công nghiệp lần thứ tư','ba giai đoạn','hai giai đoạn','bốn giai đoạn','một giai đoạn','công nghiệp hóa','hiện đại hóa','sản xuất hàng hóa','kinh tế thị trường','lợi ích kinh tế','quan hệ sản xuất','lực lượng sản xuất','chủ nghĩa trọng thương','chủ nghĩa trọng nông','cơ chế thị trường','tiền công','tiền tệ','giá trị','lợi nhuận','thể chế','chức năng','thời gian','nguồn gốc','bản chất','đặc trưng','công thức','tỷ suất','khối lượng','thuộc tính','khủng hoảng','hữu hình','vô hình','cất trữ','lưu thông','thanh toán','tự do','thiếu tư liệu','đào tạo','phân phối','nhận thức','thực tiễn','phương pháp luận','tư tưởng','1615','2001','Đại hội IX','giá trị thặng dư tương đối','giá trị thặng dư tuyệt đối','giá trị thặng dư siêu ngạch','tỷ suất giá trị thặng dư','khối lượng giá trị thặng dư','thời gian lao động xã hội cần thiết','lao động trừu tượng','lao động cụ thể','lao động giản đơn','lao động phức tạp','giá trị sử dụng','giá trị thặng dư','tư bản bất biến','tư bản khả biến','tư bản cố định','tư bản lưu động','tư bản tài chính','tư bản thương nghiệp','tư bản cho vay','tích lũy tư bản','tích tụ','tập trung','năng suất lao động','cường độ lao động','phân công lao động xã hội','tách biệt về kinh tế','sức lao động','tư liệu sản xuất','tư liệu lao động','địa tô chênh lệch','địa tô tuyệt đối','thâm canh','độc quyền nhà nước','xuất khẩu tư bản','xuất khẩu hàng hóa','kinh tế nhà nước','kinh tế tư nhân','chủ đạo','động lực quan trọng','quy luật giá trị','lợi nhuận bình quân','lợi nhuận độc quyền','tỷ suất lợi nhuận','cung - cầu','công dụng','hơi nước','năng lượng điện','máy tính','trí tuệ nhân tạo','Big data','IoT','AI','Cartel','Syndicate','Trust','cổ phiếu khống chế','bàn tay vô hình','ngang giá','lao động không công','đầu tư trực tiếp','đầu tư gián tiếp','KHÔNG','không đúng','sai','tăng','giảm'];
+const keywordPattern=new RegExp(KEYWORDS.sort((a,b)=>b.length-a.length).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'giu');
+function highlight(text){let out='',end=0,n=0;for(const m of String(text).matchAll(keywordPattern)){if(/[\p{L}\p{N}]/u.test(text[m.index-1]||'')||/[\p{L}\p{N}]/u.test(text[m.index+m[0].length]||''))continue;if(n++>=5)break;out+=esc(text.slice(end,m.index))+'<strong class="keyword">'+esc(m[0])+'</strong>';end=m.index+m[0].length}return out+esc(String(text).slice(end))}
+const MEMORY={};
+function remember(ids,text){ids.forEach(id=>MEMORY[id]=text)}
+remember([1],'Gặp “phân chia thị trường” trong câu này: nối ngay với “toàn cầu hóa”. Nhớ cụm thị trường → toàn cầu.');
+remember([2],'Nhớ con số 3: hiệp tác đơn giản → công trường thủ công → đại công nghiệp.');
+remember([6],'Địa tô II → thêm đầu tư → thâm canh. Đừng nhầm với lợi thế đất đai của địa tô I.');
+remember([27,260],'Hai điều kiện đi thành một cặp: PHÂN CÔNG + TÁCH BIỆT. Thiếu một vế là chưa đủ.');
+remember([75,258,292],'Cặp của Mác: CỤ THỂ tạo công dụng; TRỪU TƯỢNG tạo giá trị. Nhớ “cụ–công, trừu–trị”.');
+remember([236,466],'CỤ THỂ → công việc có ích, nghề cụ thể → giá trị sử dụng. Nhớ hai chữ C: cụ thể – công dụng.');
+remember([270,384,398,442,461],'TRỪU TƯỢNG → bỏ qua nghề cụ thể, xét hao phí sức lao động nói chung → giá trị.');
+remember([267],'Giá trị SỬ DỤNG hỏi “dùng để làm gì?” → công dụng.');
+remember([254],'PHỨC TẠP → phải học, phải được đào tạo.');
+remember([446],'GIẢN ĐƠN → không cần qua đào tạo chuyên môn cũng làm được.');
+remember([112],'NĂNG SUẤT tăng → cùng thời gian làm nhiều sản phẩm → giá trị một sản phẩm giảm. Đừng nhầm với cường độ.');
+remember([96,500],'TUYỆT ĐỐI → kéo dài giờ làm; thời gian tất yếu giữ nguyên. Nhớ “tuyệt đối kéo giờ”.');
+remember([305],'SIÊU NGẠCH là biến tướng của TƯƠNG ĐỐI. Nhớ một cặp: siêu ngạch – tương đối.');
+remember([109,313,514],'m′ có dấu phẩy → tỷ suất, nói về MỨC ĐỘ. M viết hoa → khối lượng, nói về QUY MÔ.');
+remember([192,337],'M viết hoa là KHỐI LƯỢNG. M = m′ × V; nếu m′ viết dưới dạng %, đổi sang số thập phân khi nhân.');
+remember([181,195],'TÍCH LŨY → đem phần giá trị thặng dư quay lại làm tư bản. Nhớ “dư → vốn”.');
+remember([265,444,480],'c → tư liệu sản xuất → bảo tồn và chuyển giá trị. Phân loại c/v xét vai trò đối với giá trị thặng dư.');
+remember([434],'v → sức lao động → khoản tiền mua sức lao động (tiền lương).');
+remember([173,252,316,393],'CỐ ĐỊNH: giá trị chuyển từng phần. LƯU ĐỘNG: giá trị chuyển toàn bộ trong một chu kỳ. Cố–lưu xét cách CHUYỂN.');
+remember([388],'BẤT BIẾN / KHẢ BIẾN xét vai trò tạo giá trị thặng dư; CỐ ĐỊNH / LƯU ĐỘNG xét cách chuyển giá trị.');
+remember([152,507],'Cấu tạo hữu cơ → c/v. Nhớ “tư liệu trên sức lao động” khi liên hệ với cấu tạo kỹ thuật.');
+remember([323],'G = c + v + m. Mẹo ba phần: giá trị cũ + giá trị sức lao động + phần thặng dư.');
+remember([353],'k = c + v: khoản nhà tư bản ứng ra, chưa cộng m. Nhớ “chi phí chưa có dư”.');
+remember([342],'Tỷ suất LỢI NHUẬN → chia cho toàn bộ vốn c + v. Tỷ suất THẶNG DƯ → chia cho v.');
+remember([184,448],'T–H–T′: bắt đầu bằng tiền, kết thúc bằng tiền lớn hơn. Điểm cần nhớ là dấu phẩy ở T′.');
+remember([377],'SỨC LAO ĐỘNG đặc biệt: dùng nó tạo ra giá trị mới lớn hơn giá trị của chính nó.');
+remember([485],'Hai điều kiện: TỰ DO thân thể nhưng THIẾU tư liệu sản xuất. Nhớ “tự do + thiếu tư liệu”.');
+remember([318],'TRỌNG THƯƠNG → thương mại → lưu thông.');
+remember([339],'TRỌNG NÔNG → sản xuất nông nghiệp.');
+remember([345],'Adam Smith → bàn tay vô hình. Hình dung thị trường tự điều tiết qua lợi ích và cạnh tranh.');
+remember([35],'Ba biểu hiện: NHÂN SỰ – SỞ HỮU – ĐIỀU TIẾT. Đọc thành một nhịp ba vế.');
+remember([405],'Độc quyền NHÀ NƯỚC → kết hợp độc quyền tư nhân với nhà nước tư sản.');
+remember([154,198],'Xuất khẩu TƯ BẢN → mang vốn đi đầu tư → thu giá trị thặng dư ở nước ngoài.');
+remember([397],'Mua cổ phiếu, trái phiếu → GIÁN TIẾP. Nhớ “mua giấy tờ, đầu tư gián tiếp”.');
+remember([363],'TRUST → cùng quản lý cả sản xuất, tiêu thụ và tài vụ. Nhớ “Trust: chung cả ba”.');
+remember([440,488],'SYNDICATE → chung khâu bán, còn riêng khâu sản xuất. Nhớ “chung bán – riêng làm”.');
+remember([536],'Chế độ tham dự → nắm CỔ PHIẾU KHỐNG CHẾ → kiểm soát công ty.');
+remember([90],'Cách mạng 2 → ĐIỆN và dây chuyền. Nhịp bốn cuộc: hơi nước – điện – máy tính – kết nối thông minh.');
+remember([187,356],'Cách mạng 1 → HƠI NƯỚC, cơ khí hóa → từ thủ công sang máy móc.');
+remember([123,394],'Cách mạng 3 → MÁY TÍNH và công nghệ thông tin.');
+remember([122,359],'Cách mạng 4 → bộ ba AI – IoT – Big Data: thông minh, kết nối, dữ liệu.');
+remember([67,279],'Mục tiêu gồm 5 vế: GIÀU – MẠNH – DÂN CHỦ – CÔNG BẰNG – VĂN MINH.');
+remember([158,299],'Theo tài liệu học này: NHÀ NƯỚC → chủ đạo; TƯ NHÂN → một động lực quan trọng. Đọc kỹ đề hỏi thành phần nào.');
+remember([511],'Đại hội IX → 2001 → mô hình kinh tế tổng quát. Ghi nhớ ba điểm đi liền nhau.');
+remember([535],'Bốn chức năng: NHẬN THỨC – THỰC TIỄN – PHƯƠNG PHÁP LUẬN – TƯ TƯỞNG. Tự đọc lại theo nhịp 2–2.');
+function memoryTip(q){
+ if(q.warning)return 'Câu này cần đối chiếu lại PDF hoặc giáo trình trước khi học thuộc. Không dùng mẹo để ghi nhớ một dữ kiện chưa rõ.';
+ if(/\bsai\b|không đúng|không phải|KHÔNG/.test(q.question))return 'Khoanh từ KHÔNG / SAI trước khi đọc đáp án. Phương án được chọn ở đây là ý không phù hợp với yêu cầu đề; đừng học nó như một khẳng định đúng.';
+ if(MEMORY[q.id])return MEMORY[q.id];
+ const answers=q.correct.map(k=>q.options.find(o=>o.id===k).text);
+ if(answers.some(t=>/^(tất cả|cả ba|cả bốn|các phương án)/i.test(t)))return 'Đáp án gộp: kiểm tra từng ý riêng trước. Khi ôn, che lựa chọn “tất cả” và tự kể lại các ý, thay vì chỉ nhớ chữ cái.';
+ if(answers.some(t=>/^[A-F] và [A-F]/.test(t)))return 'Đây là đáp án liên kết nhiều lựa chọn. Đọc lại nội dung của từng lựa chọn được nhắc đến; không ghi nhớ riêng chữ cái.';
+ if(q.correct.length>1)return `Nhớ theo ${q.correct.length} ý riêng: đọc mỗi đáp án đúng thành một nhịp, rồi che lại và kể đủ ${q.correct.length} ý. Chọn thiếu hoặc thừa đều chưa đúng.`;
+ if(/^\d+[\d\s.,–—\-]*(năm|tháng|giờ|%)?$/.test(answers[0]))return 'Gắn con số trong đáp án với đúng sự kiện hoặc đại lượng ở câu hỏi. Tự hỏi lại cả “bao nhiêu?” và “của cái gì?” để tránh nhớ lẫn.';
+ if(answers[0].includes(';'))return 'Chia đáp án thành các cụm ở dấu chấm phẩy. Đặt một từ khóa cho mỗi cụm rồi tự kể lại theo đúng thứ tự.';
+ return 'Đọc phần in đậm trong đáp án đúng, che đáp án và tự nói lại ý chính bằng một câu ngắn. Nhớ nội dung, không nhớ chữ A/B/C/D.';
+}
+function memoryBox(q){return `<section class="memory"><span class="eyebrow">↳ Mẹo ghi nhớ</span><p>${highlight(memoryTip(q))}</p><small>Mẹo hỗ trợ học; đáp án vẫn theo PDF nguồn.</small></section>`}
