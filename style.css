@@ -3,3 +3,6 @@
 .good{border-width:2px!important}.bad{border-style:dashed!important}.verdict{display:inline-block;margin:4px 0;font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.3px}.navgrid button.current{background:#171717;color:#fff}.navgrid button.marked{box-shadow:inset 0 -3px #888}
 
 .keyword{font-weight:800;text-decoration:underline;text-decoration-color:#bbb;text-underline-offset:4px;text-decoration-thickness:1px}.question h2,.review h3{font-weight:500}.memory{background:#f2f2f2;border-left:3px solid #222;border-radius:0 12px 12px 0;padding:18px 20px;margin:18px 0}.memory p{font-size:15px;line-height:1.8}.memory small{font-size:11px;color:#777}
+
+/* Correctness is the only color accent in the monochrome layout. */
+.option.good{border:2px solid #22834f!important;background:#eaf7ee!important;color:#174c30}.good .verdict{color:#17653b}.feedback:not(.wrong){background:#eaf7ee;border:1px solid #80b997;color:#174c30}.good input{accent-color:#21834e}.feedback:not(.wrong) strong{color:#17653b}
