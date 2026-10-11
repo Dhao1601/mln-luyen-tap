@@ -1,4 +1,6 @@
-Chạy web trên localhost. Mã nguồn được sao lưu lên GitHub theo yêu cầu; chưa triển khai web công khai.
+Web chạy được trên localhost và GitHub Pages công khai theo yêu cầu.
+Link học: https://dhao1601.github.io/mln-luyen-tap/
+Mã nguồn: https://github.com/Dhao1601/mln-luyen-tap
 
 Chạy trong thư mục dự án:
 python3 -m http.server 8766 --bind 127.0.0.1 --directory dist
