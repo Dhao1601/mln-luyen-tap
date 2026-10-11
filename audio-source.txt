@@ -1,0 +1,2 @@
+Correct-answer sound: user-supplied reference https://www.youtube.com/watch?v=zUZOyLbncng
+Extracted original correct segment 1.59–2.67s; green check frame verified. No wrong-answer sound included.

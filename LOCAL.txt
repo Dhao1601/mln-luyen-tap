@@ -1,0 +1,27 @@
+Chạy web trên localhost. Mã nguồn được sao lưu lên GitHub theo yêu cầu; chưa triển khai web công khai.
+
+Chạy trong thư mục dự án:
+python3 -m http.server 8766 --bind 127.0.0.1 --directory dist
+
+Mở http://127.0.0.1:8766/
+Tiến độ thuộc từng trình duyệt và địa chỉ (origin). Bản online và localhost không tự dùng chung lịch sử câu sai.
+
+Nội dung mẹo được viết theo từng ID trong notes/001-100.txt ... notes/501-538.txt.
+Các câu cùng khái niệm thực sự có thể dùng chung mẹo, không có mẹo chung thay thế khi thiếu nội dung.
+Sau khi sửa mẹo: node build-notes.cjs
+Kiểm tra: node check.cjs
+
+538 câu có phần Hiểu & nhớ và Liên hệ thực tế.
+30 câu nguồn có lỗi hoặc điểm chưa rõ được đánh dấu, bỏ qua khi tạo bài mặc định.
+Khóa đáp án PDF được giữ nguyên để đối chiếu, không được coi là đã hiệu đính tuyệt đối.
+Các ví dụ số do người soạn đặt để minh họa, không phải dữ liệu khảo sát.
+Âm đúng: assets/correct.mp3, trích từ video người dùng cung cấp; xem audio-source.txt.
+Âm sai: không phát. Câu nguồn chưa rõ: không phát âm mừng và không tô khóa PDF xanh.
+
+Đề 2 MLN111: http://127.0.0.1:8766/?de=2
+Đề 1 MLN122: http://127.0.0.1:8766/
+Mỗi đề có khóa lưu tiến độ, lịch sử và câu sai riêng. Khóa MLN122 cũ được giữ nguyên.
+MLN111: 598 thẻ, 14 câu nhiều đáp án; 2 câu được đánh dấu cần đối chiếu, bỏ qua mặc định.
+Thẻ 172 gốc là tự luận, đã thêm lựa chọn trắc nghiệm và ghi rõ trong ghi chú.
+MLN111 chưa có bộ mẹo tự soạn; không dùng nhầm mẹo MLN122 theo cùng số thứ tự.
+Dữ liệu gốc và dấu vết nhập: notes/mln111-raw.json, import-mln111.py.
