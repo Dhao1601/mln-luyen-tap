@@ -6,3 +6,9 @@
 
 /* Correctness is the only color accent in the monochrome layout. */
 .option.good{border:2px solid #22834f!important;background:#eaf7ee!important;color:#174c30}.good .verdict{color:#17653b}.feedback:not(.wrong){background:#eaf7ee;border:1px solid #80b997;color:#174c30}.good input{accent-color:#21834e}.feedback:not(.wrong) strong{color:#17653b}
+
+/* Answer text stays plain; keyword emphasis is reserved for the question and study notes. */
+.option>span,.feedback>p{font-weight:400}
+.memory-part{margin-top:16px}.memory-label{display:block;font-size:12px;font-weight:700;color:#595959;letter-spacing:.2px}.memory-part p{margin:5px 0 0}.memory-part.example{border-top:1px solid #d7d7d7;padding-top:14px;margin-bottom:14px}.memory small{display:block;line-height:1.6}.source-key{border:2px dashed #777!important;background:#f5f5f5!important}.feedback.unverified{background:#f5f5f5!important;border:1px dashed #777!important;color:#333!important}.feedback.unverified strong{color:#333!important}
+
+.deck-switch{max-width:1140px;margin:26px auto 0;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.deck-switch a{display:flex;flex-direction:column;gap:4px;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px}.deck-switch a>span{font-weight:700}.deck-switch a[aria-current="page"]{background:#191919;color:white;border-color:#191919}.deck-switch a[aria-current="page"] small{color:#d2d2d2}.deck-switch a:hover{box-shadow:0 0 0 1px #666}@media(max-width:760px){.deck-switch{padding:0 16px;gap:8px}.deck-switch a{padding:12px}.deck-switch a>span{font-size:14px}.deck-switch small{font-size:11px}}
